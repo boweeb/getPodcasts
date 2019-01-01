@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "getPodcasts"
+version = "0.1.0"
+description = "This is a script that will check a config file, get and parse an rss feed, and then download/rename podcast files"
+authors = ["Jonathan Ayers <jfayerz@icloud.com>"]
+license = "GPL-3.0"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+feedparser = "^5.2"
+mutagen = "^1.42"
+
+[tool.poetry.dev-dependencies]
+black = {version = "^18.3-alpha.0",allows-prereleases = true}
+ipython = "^7.2"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
