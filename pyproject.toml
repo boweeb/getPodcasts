@@ -1,9 +1,41 @@
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
 [tool.poetry]
-name = "getPodcasts"
+name = "get_podcasts"
 version = "0.1.0"
 description = "This is a script that will check a config file, get and parse an rss feed, and then download/rename podcast files"
 authors = ["Jonathan Ayers <jfayerz@icloud.com>"]
 license = "GPL-3.0"
+readme = "README.rst"
+homepage = "https://github.com/jfayerz/get_podcasts.py"
+repository = "ssh://git@github.com/jfayerz/get_podcasts.py.git"
+keywords = ["get_podcasts.py", "podcasts"]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Natural Language :: English",
+    "Operating System :: POSIX",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Topic :: Multimedia :: Sound/Audio",
+    "Topic :: System :: Archiving"
+]
+
+include = [
+    "docs/**/*",
+    "tests/**/*",
+    "AUTHORS.rst",
+    "CONTRIBUTING.rst",
+    "HISTORY.rst"
+]
 
 [tool.poetry.dependencies]
 python = "^3.7"
@@ -13,7 +45,20 @@ mutagen = "^1.42"
 [tool.poetry.dev-dependencies]
 black = {version = "^18.3-alpha.0",allows-prereleases = true}
 ipython = "^7.2"
+bumpversion = "^0.5.3"
+wheel = "^0.32.3"
+watchdog = "^0.9.0"
+tox = "^3.6"
+coverage = "^4.5"
+Sphinx = "^1.8"
+twine = "^1.12"
+pytest = "^4.0"
+pytest-runner = "^4.2"
+mypy = "^0.650.0"
+pytest-cov = "^2.6"
+bandit = "^1.5"
+safety = "^1.8"
+prospector = { version = "^1.1", extras = [ "with_pyroma", "with_vulture", "with_mypy" ] }
 
-[build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
+[tool.poetry.scripts]
+get_podcasts = 'get_podcasts.get_podcasts:main'
