@@ -1,19 +1,19 @@
-#! /usr/bin/env python3
+# vim: set fileencoding=utf-8 ts=8 et sw=4 sts=4 smarttab autoindent:
+# -*- coding: utf-8 -*-
 
-"""
-Notes:
+
+"""Notes:
 Simple podcast downloader
 - gets the rss
 - gets the url
 - downloads the most recent episode
 - edits the metadata
 
-written by Jonathan Ayers
-https://github.com/jfayerz/get_podcasts
+TODO:
+- option to continue scrolling down list of episodes after downloading
+    your first selection
 """
-# TODO:
-#   - option to continue scrolling down list of episodes after downloading
-#       your first selection
+
 
 import sys
 import re
@@ -25,10 +25,11 @@ from mutagen.id3 import ID3NoHeaderError
 from mutagen.id3 import ID3
 from mutagen.id3 import TIT2, TALB, TPE1, TPE2, TRCK, TPOS
 
+
 user_options = len(sys.argv)
 todays_date = str(date.today())
 path_to_configuration_file = ''
-configuration_settings_file = 'pod_config'
+configuration_settings_file = 'pod_config.ini'
 history_file = 'pod_history'
 # rss_parameters_from_file = 'rssparams'  # this isn't needed any longer
 config = cp.ConfigParser()
