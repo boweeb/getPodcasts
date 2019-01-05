@@ -488,30 +488,39 @@ def primary_function(delim1, delim2, config):
             print("File Saved.\nMetadata written.\n")
 
 
-if user_options != 1:
-    if sys.argv[1].lower() == '-h' or sys.argv[1].lower() == '--help':
-        print("get_podcasts - https://github.com/jfayers/get_podcasts/",
-              "\n\n\tOptions\t\tDescription",
-              "\n\n\t-h, --help\t\tThis help screen",
-              "\n\t-m, --menu\t\tGives menu options",
-              "\n\n\tDefault: No Arguments",
-              "\n\t\tProceed with auto download",
-              "\n\t\tof newest episodes.")
-    elif sys.argv[1].lower() == '-m' or sys.argv[1].lower() == '--menu':
-        all_or_one = input("[A]ll podcasts or [C]hoose from list? ")
-        if isinstance(all_or_one, str) and all_or_one.lower() == 'c':
-            count_goes_up = 0
-            while count_goes_up < len(config.sections()):
-                print("[" + str(count_goes_up + 1) + "] - " + config.sections()[count_goes_up])
-                count_goes_up += 1
-            choice = int(input("Choose One: ")) - 1
-            choice2 = choice + 1
-            primary_function(choice, choice2, config)
+def main():
+    if user_options != 1:
+        if sys.argv[1].lower() == '-h' or sys.argv[1].lower() == '--help':
+            print("get_podcasts - https://github.com/jfayers/get_podcasts/",
+                  "\n\n\tOptions\t\tDescription",
+                  "\n\n\t-h, --help\t\tThis help screen",
+                  "\n\t-m, --menu\t\tGives menu options",
+                  "\n\n\tDefault: No Arguments",
+                  "\n\t\tProceed with auto download",
+                  "\n\t\tof newest episodes.")
+        elif sys.argv[1].lower() == '-m' or sys.argv[1].lower() == '--menu':
+            all_or_one = input("[A]ll podcasts or [C]hoose from list? ")
+            if isinstance(all_or_one, str) and all_or_one.lower() == 'c':
+                count_goes_up = 0
+                while count_goes_up < len(config.sections()):
+                    print("[" + str(count_goes_up + 1) + "] - " + config.sections()[
+                        count_goes_up])
+                    count_goes_up += 1
+                choice = int(input("Choose One: ")) - 1
+                choice2 = choice + 1
+                primary_function(choice, choice2, config)
+            else:
+                choice = 0
+                choice2 = len(config.sections())
+                primary_function(choice, choice2, config)
         else:
-            choice = 0
-            choice2 = len(config.sections())
-            primary_function(choice, choice2, config)
+            print("Invalid Option\nuse \"-h\" for help")
     else:
-        print("Invalid Option\nuse \"-h\" for help")
-else:
-    get_podcasts(config_sections, history_sections)
+        get_podcasts(config_sections, history_sections)
+
+
+if __name__ == "__main__":
+    main()
+
+
+# EOF
